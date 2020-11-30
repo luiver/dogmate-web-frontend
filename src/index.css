@@ -7,7 +7,57 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+a {
+  text-decoration: none;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.brown-background{
+  background: #4A3737;
+}
+
+.brown{
+  color: #4A3737;
+}
+
+.light-blue{
+  background: #9FCCE5;
+}
+
+.background-gray{
+  background: #E5E5E5;
+}
+
+.yellow{
+  background: #E9B600;
+}
+
+.alert-orange{
+  background: #FF5C00;
+}
+
+.gray{
+  background: #F6F5F2;
+}
+
+.turquoise{
+  color: #05BAAF;
+}
+
+.lighter-blue {
+  background: #CAECFF;
+}
+
+.letters-dark-gray {
+  background: #5E6472;
+}
+
+.redirect {
+  color: #FFFFFF;
+
+}
+
