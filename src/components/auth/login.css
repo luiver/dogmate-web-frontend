@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+}
+
+.login-outer-box {
+    font-family: Montserrat, serif;
+    font-style: normal;
+    font-weight: bold;
+    border-radius: 43px;
+    width: 481px;
+    height: 406px;
+    left: 442px;
+    top: 120px;
+    padding: 2em;
+}
+
+.login-inner-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.login-inner-box form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-inner-box form input {
+    background: #FFFFFF;
+    height: 2em;
+    border: 0;
+    border-radius: 10px;
+    margin: 0.5em;
+    font-family: Montserrat, serif;
+    font-style: normal;
+    font-weight: bold;
+    text-align: center;
+    font-size: 24px;
+}
+
+.login-inner-box h1 {
+    align-self: center;
+}
+
+.login-inner-box button {
+    font-family: Montserrat, serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 34px;
+    width: 50%;
+    height: 1.45em;
+    align-self: center;
+    color: #FFFFFF;
+    outline: 0;
+    border: 0;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin: 1em;
+}
+
+
+
+::-webkit-input-placeholder {
+    text-align: center;
+    color: rgba(0,0,0,0.4);
+    font-size: 24px;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    text-align: center;
+    color: rgba(0,0,0,0.4);
+    font-size: 24px;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    text-align: center;
+    color: rgba(0,0,0,0.4);
+    font-size: 24px;
+}
+
+:-ms-input-placeholder {
+    text-align: center;
+    color: rgba(0,0,0,0.4);
+    font-size: 24px;
+}
