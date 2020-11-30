@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Login from "./components/auth/Login";
 import reportWebVitals from './reportWebVitals';
+import Registration from './components/auth/Registration';
 
 ReactDOM.render(
   <React.StrictMode>
       <Login/>
+      <Registration/>
   </React.StrictMode>,
   document.getElementById('root')
 );
