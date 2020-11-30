@@ -27,18 +27,18 @@ export default class Login extends Component {
         axios
             .post(
                 "http://localhost:8080/login",
-
-                    {
-                        username: email,
-                        password: password
-                    }
-
+                {
+                    username: email,
+                    password: password
+                }
                 // {
                 //     withCredentials: true
                 // }
             )
             .then(response => {
                 console.log("res from login", response);
+                console.log("auth below")
+                console.log(response.headers.authorization.valueOf())
             })
             .catch(error => {
                 console.log("login error", error);
