@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import './login.css'
+import './auth.css'
 
 export default class Login extends Component {
     constructor(props) {
@@ -36,6 +36,8 @@ export default class Login extends Component {
                 console.log("res from login", response);
                 console.log("auth below")
                 console.log(response.headers.authorization.valueOf())
+                //todo create cookie for user with jwt
+                //todo redirect to homepage
             })
             .catch(error => {
                 console.log("login error", error);
@@ -53,9 +55,8 @@ export default class Login extends Component {
     render() {
         return (
             //todo Header here
-
-            <div className={"login-outer-box light-blue"}>
-                <div className={"login-inner-box"}>
+            <div className={"outer-box light-blue"}>
+                <div className={"inner-box"}>
                 <h1 className={"brown"}>Sign in</h1>
                 <h4>{this.state.loginErrors}</h4>
                 <form onSubmit={this.handleSubmit}>
@@ -75,12 +76,11 @@ export default class Login extends Component {
                         onChange={this.handleChange}
                         required
                     />
-
                     <button className={"yellow"} type="submit">Sign in!</button>
                 </form>
                 </div>
                 <span className={"brown"}>Don't have an account? </span>
-                <a className={"redirect"} href={"/register"}>Sign up!</a>
+                <a className={"redirect-font-color"} href={"/register"}>Sign up!</a>
             </div>
         );
     }
