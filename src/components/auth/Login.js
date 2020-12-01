@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Link, Route} from 'react-router-dom';
 import './auth.css'
 import Home from "../home/Home";
+import Header from "../header/Header";
 
 export default class Login extends Component {
     constructor(props) {
@@ -70,34 +71,37 @@ export default class Login extends Component {
         }
 
         return (
-            //todo Header here
-            <div className={"outer-box light-blue"}>
-                <div className={"inner-box"}>
-                    <h1 className={"brown"}>Sign in</h1>
-                    <h4>{this.state.loginErrors}</h4>
-                    <form onSubmit={this.handleSubmit}>
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="email"
-                            value={this.state.email}
-                            onChange={this.handleChange}
-                            required
-                        />
-                        <input
-                            type="password"
-                            name="password"
-                            placeholder="password"
-                            value={this.state.password}
-                            onChange={this.handleChange}
-                            required
-                        />
-                        <button className={"yellow"} type="submit">Sign in!</button>
-                    </form>
+            <div>
+                <Header/>
+                <div className={"outer-box light-blue"}>
+                    <div className={"inner-box"}>
+                        <h1 className={"brown"}>Sign in</h1>
+                        <h4>{this.state.loginErrors}</h4>
+                        <form onSubmit={this.handleSubmit}>
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="email"
+                                value={this.state.email}
+                                onChange={this.handleChange}
+                                required
+                            />
+                            <input
+                                type="password"
+                                name="password"
+                                placeholder="password"
+                                value={this.state.password}
+                                onChange={this.handleChange}
+                                required
+                            />
+                            <button className={"yellow"} type="submit">Sign in!</button>
+                        </form>
+                    </div>
+                    <span className={"brown"}>Don't have an account? </span>
+                    <Link className={"redirect-font-color"} to="/registration">Sign up!</Link>
                 </div>
-                <span className={"brown"}>Don't have an account? </span>
-                <Link className={"redirect-font-color"} to="/registration">Sign up!</Link>
             </div>
+
         );
     }
 }
