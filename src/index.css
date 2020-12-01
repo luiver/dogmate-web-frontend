@@ -42,6 +42,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+.logo {
+  font-weight: 500;
+}
+
 a {
   text-decoration: none;
 }
