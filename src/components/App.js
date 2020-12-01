@@ -1,7 +1,5 @@
 import React from "react";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import Login from "./auth/Login";
-import Registration from "./auth/Registration";
 import MainTemplate from "./template/MainTemplate";
 
 export default function App() {
@@ -10,13 +8,17 @@ export default function App() {
             <div>
                 <Switch>
                     <Route path="/registration">
-                        <Registration/>
+                        {/*<Registration/>*/}
+                        <MainTemplate doesUserWantToRegister={true}/>
                     </Route>
                     {/*<Route path="/">*/}
                     {/*    <Login/>*/}
                     {/*</Route>*/}
                     <Route path="/">
                        <MainTemplate/>
+                    </Route>
+                    <Route path="/login">
+                        <MainTemplate doesUserWantToRegister={false}/>
                     </Route>
                 </Switch>
             </div>
