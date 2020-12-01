@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: local('Montserrat-Bold'), url(./fonts/Montserrat/Montserrat-Bold.ttf) format('truetype');
+  src: local('Montserrat-Regular'), url(./fonts/Montserrat/Montserrat-Regular.ttf) format('truetype');
+  src: local('Montserrat-Medium'), url(./fonts/Montserrat/Montserrat-Medium.ttf) format('truetype');
+  src: local('Montserrat-LightItalic'), url(./fonts/Montserrat/Montserrat-LightItalic.ttf) format('truetype');
+  src: local('Montserrat-Light'), url(./fonts/Montserrat/Montserrat-Light.ttf) format('truetype');
+  src: local('Montserrat-Italic'), url(./fonts/Montserrat/Montserrat-Italic.ttf) format('truetype');
+}
+
 body {
   margin: 0;
   font-family: Montserrat, sans-serif;
