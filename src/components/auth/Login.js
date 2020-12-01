@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './auth.css'
 
 export default class Login extends Component {
@@ -24,7 +24,7 @@ export default class Login extends Component {
     }
 
     handleSubmit(event) {
-        const {email, password} = this.state;
+        const { email, password } = this.state;
 
         axios
             .post(
@@ -32,7 +32,7 @@ export default class Login extends Component {
                 {
                     username: email,
                     password: password
-                }, {withCredentials: true})
+                }, { withCredentials: true })
             .then(response => {
                 console.log("res from login", response);
                 console.log("auth below")
@@ -79,10 +79,9 @@ export default class Login extends Component {
                         />
                         <button className={"yellow"} type="submit">Sign in!</button>
                     </form>
+                    <div className={"additional-info"}><span className={"brown"}>Don't have an account?&nbsp;</span>
+                    <Link to="/registration">Sign up!</Link></div>
                 </div>
-                <span className={"brown"}>Don't have an account? </span>
-                <Link to="/registration">Sign up!</Link>
-                {/*<a className={"redirect-font-color"} href={"/register"}>Sign up!</a>*/}
             </div>
         );
     }
