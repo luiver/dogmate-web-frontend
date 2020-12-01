@@ -30,11 +30,7 @@ export default class Login extends Component {
                 {
                     username: email,
                     password: password
-                }
-                // {
-                //     withCredentials: true
-                // }
-            )
+                },{withCredentials: true})
             .then(response => {
                 console.log("res from login", response);
                 console.log("auth below")
