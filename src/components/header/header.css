@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+}
+
+.logo {
+    color: #9FCCE5;
+    margin: 0.6em;
+    font-size: 36px;
+}
+
+.main-avatar {
+    font-size: 36px;
+    height: 2em;
+    width: 2em;
+    padding: 0.2em;
+    border-radius: 10em;
+    margin: 0.5em;
+}
