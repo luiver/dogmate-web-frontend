@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './auth.css'
+import Home from "../home/Home";
 
 export default class Login extends Component {
     constructor(props) {
@@ -10,7 +11,8 @@ export default class Login extends Component {
         this.state = {
             email: "",
             password: "",
-            loginErrors: ""
+            loginErrors: "",
+            isLogIn: false,
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -39,12 +41,19 @@ export default class Login extends Component {
                 console.log(response.headers.authorization.valueOf())
                 //todo create cookie for user with jwt
                 //todo redirect to homepage
+                if (response.status.valueOf() === 200) {
+                    this.changeIsLogin();
+                }
             })
             .catch(error => {
                 console.log("login error", error);
                 this.changeErrorMessage()
             })
         event.preventDefault();
+    }
+
+    changeIsLogin = () => {
+        this.setState(prevState => ({ isLogIn: !prevState.isLogIn }));
     }
 
     changeErrorMessage = () => {
@@ -54,6 +63,12 @@ export default class Login extends Component {
     };
 
     render() {
+        const { isLogIn } = this.state;
+
+        if (isLogIn) {
+           return <Home />
+        }
+
         return (
             //todo Header here
             <div className={"outer-box light-blue"}>
