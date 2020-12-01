@@ -44,6 +44,12 @@ body {
     align-self: center;
 }
 
+.login-inner-box h4 {
+    color: #db0000;
+    margin: 0;
+    align-self: center;
+}
+
 .login-inner-box button {
     font-family: Montserrat, serif;
     font-style: normal;

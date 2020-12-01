@@ -45,9 +45,8 @@ export default class Login extends Component {
     }
 
     changeErrorMessage = () => {
-        const { loginErrors } = this.state;
         return this.setState({
-            loginErrors: loginErrors + "Wrong Username or Password!"
+            loginErrors: "Wrong Username or Password!"
         })
     };
 
