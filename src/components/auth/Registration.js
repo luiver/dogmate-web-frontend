@@ -27,12 +27,15 @@ export default class Registration extends Component {
     }
 
     handleSubmit(event) {
-        axios.post("https://localhost:8080/api/v1/users", {
+        axios.post("http://localhost:8080/api/v1/users", {
             user: {
                 email : this.state.email,
                 password : this.state.password,
             }
-        }, {withCredentials : true}).then(response => {
+        },
+         {withCredentials : true}
+        )
+        .then(response => {
             console.log("registration res", response);
         }).catch(error => {
             console.log("registration error", error)
