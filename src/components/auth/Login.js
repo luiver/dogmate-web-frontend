@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import './auth.css'
-import Home from "../home/Home";
-import Header from "../header/Header";
 
 export default class Login extends Component {
     constructor(props) {
@@ -13,7 +11,6 @@ export default class Login extends Component {
             email: "",
             password: "",
             loginErrors: "",
-            isLogIn: false,
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,7 +25,6 @@ export default class Login extends Component {
 
     handleSubmit(event) {
         const { email, password } = this.state;
-
         axios
             .post(
                 "http://localhost:8080/login",
@@ -41,9 +37,8 @@ export default class Login extends Component {
                 console.log("auth below")
                 console.log(response.headers.authorization.valueOf())
                 //todo create cookie for user with jwt
-                //todo redirect to homepage
                 if (response.status.valueOf() === 200) {
-                    this.changeIsLogin();
+                    this.props.isLogInCallback(true)
                 }
             })
             .catch(error => {
@@ -53,10 +48,6 @@ export default class Login extends Component {
         event.preventDefault();
     }
 
-    changeIsLogin = () => {
-        this.setState(prevState => ({ isLogIn: !prevState.isLogIn }));
-    }
-
     changeErrorMessage = () => {
         return this.setState({
             loginErrors: "Wrong Username or Password!"
@@ -64,15 +55,7 @@ export default class Login extends Component {
     };
 
     render() {
-        const { isLogIn } = this.state;
-
-        if (isLogIn) {
-           return <Home />
-        }
-
         return (
-            <div>
-                <Header/>
                 <div className={"outer-box light-blue"}>
                     <div className={"inner-box"}>
                         <h1 className={"brown"}>Sign in</h1>
@@ -100,7 +83,6 @@ export default class Login extends Component {
                     <span className={"brown"}>Don't have an account? </span>
                     <Link className={"redirect-font-color"} to="/registration">Sign up!</Link>
                 </div>
-            </div>
         );
     }
 }
