@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
-import {Link, Route} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './auth.css'
 import Home from "../home/Home";
 import Header from "../header/Header";
@@ -27,7 +27,7 @@ export default class Login extends Component {
     }
 
     handleSubmit(event) {
-        const {email, password} = this.state;
+        const { email, password } = this.state;
 
         axios
             .post(
@@ -35,7 +35,7 @@ export default class Login extends Component {
                 {
                     username: email,
                     password: password
-                }, {withCredentials: true})
+                }, { withCredentials: true })
             .then(response => {
                 console.log("res from login", response);
                 console.log("auth below")
@@ -101,7 +101,6 @@ export default class Login extends Component {
                     <Link className={"redirect-font-color"} to="/registration">Sign up!</Link>
                 </div>
             </div>
-
         );
     }
 }

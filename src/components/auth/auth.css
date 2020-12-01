@@ -1,9 +1,12 @@
 body {
     margin: 0;
+    display: flex;
+    justify-content: center;
+    font-family: Montserrat, sans-serif;
 }
 
 .outer-box {
-    font-family: Montserrat, serif;
+    margin-top: 1rem;
     font-style: normal;
     font-weight: bold;
     border-radius: 2.5em;
@@ -12,6 +15,13 @@ body {
     left: 442px;
     top: 120px;
     padding: 2em;
+}
+
+.additional-info {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    /* align-content: center; */
 }
 
 .inner-box {
@@ -33,7 +43,6 @@ body {
     border: 0;
     border-radius: 0.4em;
     margin: 0.5em;
-    font-family: Montserrat, serif;
     font-style: normal;
     font-weight: bold;
     text-align: center;
@@ -51,7 +60,6 @@ body {
 }
 
 .inner-box button {
-    font-family: Montserrat, serif;
     font-style: normal;
     font-weight: bold;
     font-size: 28px;
