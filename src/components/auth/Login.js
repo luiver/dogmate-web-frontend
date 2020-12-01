@@ -81,8 +81,7 @@ export default class Login extends Component {
                     </form>
                 </div>
                 <span className={"brown"}>Don't have an account? </span>
-                <Link to="/registration">Sign up!</Link>
-                {/*<a className={"redirect-font-color"} href={"/register"}>Sign up!</a>*/}
+                <Link className={"redirect-font-color"} to="/registration">Sign up!</Link>
             </div>
         );
     }
