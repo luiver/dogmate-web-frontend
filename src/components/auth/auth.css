@@ -19,7 +19,6 @@ body {
     display: flex;
     flex-direction: row;
     align-self: center;
-    /* align-content: center; */
 }
 
 .inner-box {
