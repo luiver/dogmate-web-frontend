@@ -1,18 +1,29 @@
-body {
-    margin: 0;
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
+    margin-left: 0.5em;
     color: #9FCCE5;
-    margin: 0.6em;
-    font-size: 36px;
+    font-size: 48px;
 }
 
 .main-avatar {
-    font-size: 36px;
+    font-size: 40px;
     height: 2em;
     width: 2em;
     padding: 0.2em;
     border-radius: 10em;
     margin: 0.5em;
+    align-self: flex-end;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main-avatar span {
+    font-size: 72px;
 }

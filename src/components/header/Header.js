@@ -1,5 +1,6 @@
 import {Component} from "react";
 import './header.css'
+
 export default class Header extends Component {
 
     render() {
@@ -8,12 +9,10 @@ export default class Header extends Component {
                 <header>
                     <div className="logo">DOGMATE</div>
                     <div className="main-avatar yellow">
-                        A
+                        <span>A</span>
                     </div>
                 </header>
             </div>
         )
-
     }
-
 }
