@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import './auth.css'
 import Home from "../home/Home";
 import Header from "../header/Header";
+import userMenu from '../user_menu/userMenu';
 
 export default class Login extends Component {
     constructor(props) {
