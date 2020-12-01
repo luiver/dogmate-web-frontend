@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import './login.css'
-import {BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom';
-import Registration from "./Registration";
+import {Link} from 'react-router-dom';
+import './auth.css'
 
 export default class Login extends Component {
     constructor(props) {
@@ -38,6 +37,8 @@ export default class Login extends Component {
                 console.log("res from login", response);
                 console.log("auth below")
                 console.log(response.headers.authorization.valueOf())
+                //todo create cookie for user with jwt
+                //todo redirect to homepage
             })
             .catch(error => {
                 console.log("login error", error);
@@ -55,42 +56,34 @@ export default class Login extends Component {
     render() {
         return (
             //todo Header here
-            <Router>
-                <Switch>
-                    <Route path="/registration">
-                        <Registration/>
-                    </Route>
-                    <Route path="/">
-                        <div className={"login-outer-box light-blue"}>
-                            <div className={"login-inner-box"}>
-                                <h1 className={"brown"}>Sign in</h1>
-                                <h4>{this.state.loginErrors}</h4>
-                                <form onSubmit={this.handleSubmit}>
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        placeholder="email"
-                                        value={this.state.email}
-                                        onChange={this.handleChange}
-                                        required
-                                    />
-                                    <input
-                                        type="password"
-                                        name="password"
-                                        placeholder="password"
-                                        value={this.state.password}
-                                        onChange={this.handleChange}
-                                        required
-                                    />
-                                    <button className={"yellow"} type="submit">Sign in!</button>
-                                </form>
-                            </div>
-                            <span className={"brown"}>Don't have an account? </span>
-                            <Link to="/registration">Sign up!</Link>
-                        </div>
-                    </Route>
-                </Switch>
-            </Router>
+            <div className={"outer-box light-blue"}>
+                <div className={"inner-box"}>
+                    <h1 className={"brown"}>Sign in</h1>
+                    <h4>{this.state.loginErrors}</h4>
+                    <form onSubmit={this.handleSubmit}>
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="email"
+                            value={this.state.email}
+                            onChange={this.handleChange}
+                            required
+                        />
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="password"
+                            value={this.state.password}
+                            onChange={this.handleChange}
+                            required
+                        />
+                        <button className={"yellow"} type="submit">Sign in!</button>
+                    </form>
+                </div>
+                <span className={"brown"}>Don't have an account? </span>
+                <Link to="/registration">Sign up!</Link>
+                {/*<a className={"redirect-font-color"} href={"/register"}>Sign up!</a>*/}
+            </div>
         );
     }
 }

@@ -2,36 +2,36 @@ body {
     margin: 0;
 }
 
-.login-outer-box {
+.outer-box {
     font-family: Montserrat, serif;
     font-style: normal;
     font-weight: bold;
-    border-radius: 43px;
+    border-radius: 2.5em;
     width: 481px;
-    height: 406px;
+    height: 386px;
     left: 442px;
     top: 120px;
     padding: 2em;
 }
 
-.login-inner-box {
+.inner-box {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
 }
 
-.login-inner-box form {
+.inner-box form {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.login-inner-box form input {
+.inner-box form input {
     background: #FFFFFF;
     height: 2em;
     border: 0;
-    border-radius: 10px;
+    border-radius: 0.4em;
     margin: 0.5em;
     font-family: Montserrat, serif;
     font-style: normal;
@@ -40,34 +40,33 @@ body {
     font-size: 24px;
 }
 
-.login-inner-box h1 {
+.inner-box h1 {
     align-self: center;
 }
 
-.login-inner-box h4 {
+.inner-box h4 {
     color: #db0000;
     margin: 0;
     align-self: center;
 }
 
-.login-inner-box button {
+.inner-box button {
     font-family: Montserrat, serif;
     font-style: normal;
     font-weight: bold;
     font-size: 28px;
-    line-height: 34px;
+    /*line-height: 1.2em;*/
     width: 50%;
     height: 1.45em;
     align-self: center;
     color: #FFFFFF;
     outline: 0;
     border: 0;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
+    box-shadow: 0 0.14em 0.14em rgba(0, 0, 0, 0.25);
+    border-radius: 0.38em;
     margin: 1em;
+    cursor: pointer;
 }
-
-
 
 ::-webkit-input-placeholder {
     text-align: center;
