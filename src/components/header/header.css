@@ -9,6 +9,8 @@ header {
     margin-left: 0.5em;
     color: #9FCCE5;
     font-size: 48px;
+    font-style: normal;
+    font-weight: bold;
 }
 
 .main-avatar {
