@@ -35,6 +35,12 @@
   font-style: italic;
 }
 
+@font-face {
+  font-family: 'Montserrat';
+  src: local('Montserrat-SemiBold'), url(./fonts/Montserrat/Montserrat-SemiBold.ttf) format('truetype');
+  font-weight: 600;
+}
+
 body {
   margin: 0;
   font-family: Montserrat, sans-serif;
