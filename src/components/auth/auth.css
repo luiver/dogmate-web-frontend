@@ -1,8 +1,6 @@
 body {
     margin: 0;
-    display: flex;
     justify-content: center;
-    font-family: Montserrat, sans-serif;
 }
 
 .outer-box {

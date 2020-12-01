@@ -4,34 +4,19 @@ import './header.css'
 export default class Header extends Component {
     constructor(props) {
         super(props);
-        this.changeIsLogin = this.changeIsLogin.bind(this);
-        this.state = {
-            isLogIn: true
-        };
-    }
-
-    changeIsLogin = () => {
-        this.setState(prevState => ({ isLogIn: !prevState.isLogIn }));
     }
 
     render() {
-        const { isLogIn } = this.state;
-        let avatar;
-
-        if (isLogIn){
-            avatar = <UserLogo/>
-        }
-
+        const isLoginRef = this.props.isLoginRef
         return  (
             <div className={"brown-background"}>
                 <header>
                     <div className="logo">DOGMATE</div>
-                    {avatar}
+                    {isLoginRef && <UserLogo/>}
                 </header>
             </div>
         )
     }
-
 }
 
 const UserLogo = props => {
