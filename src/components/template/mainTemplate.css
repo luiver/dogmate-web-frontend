@@ -24,3 +24,9 @@
     width: 22.22vw;
     align-self: flex-end;
 }
+
+.right-container .user-menu-bar {
+    display: flex;
+    margin-left: auto;
+    /*flex-flow: column-reverse;*/
+}
