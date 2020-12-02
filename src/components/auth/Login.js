@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import './auth.css'
+import App from "../App";
 
 export default class Login extends Component {
     constructor(props) {
@@ -11,6 +12,7 @@ export default class Login extends Component {
             email: "",
             password: "",
             loginErrors: "",
+            isLogged: this.props.isLogged
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,21 +26,24 @@ export default class Login extends Component {
     }
 
     handleSubmit(event) {
-        const { email, password } = this.state;
+        const {email, password} = this.state;
         axios
             .post(
                 "http://localhost:8080/login",
                 {
                     username: email,
                     password: password
-                }, { withCredentials: true })
+                }, {withCredentials: true})
             .then(response => {
                 console.log("res from login", response);
                 console.log("auth below")
                 console.log(response.headers.authorization.valueOf())
                 //todo create cookie for user with jwt
                 if (response.status.valueOf() === 200) {
-                    this.props.isLogInCallback(true)
+                    // this.props.isLogInCallback(true)
+                    this.setState({isLogged: true})
+                    this.props.loginCallback(true)
+                    // return <MainTemplate/>
                 }
             })
             .catch(error => {
@@ -55,7 +60,14 @@ export default class Login extends Component {
     };
 
     render() {
+        const {isLogged} = this.state
+        console.log("in Login render(), isLogged= " + isLogged)
+        if (isLogged) {
+            return <App/>
+        }
+
         return (
+            <div className={"wrapper-container"}>
                 <div className={"outer-box light-blue"}>
                     <div className={"inner-box"}>
                         <h1 className={"brown"}>Sign in</h1>
@@ -79,10 +91,13 @@ export default class Login extends Component {
                             />
                             <button className={"yellow"} type="submit">Sign in!</button>
                         </form>
+                        <div className={"additional-info"}>
+                            <span className={"brown"}>Don't have an account? &nbsp;</span>
+                            <Link className={"redirect-font-color"} to="/registration">Sign up!</Link>
+                        </div>
                     </div>
-                    <span className={"brown"}>Don't have an account? </span>
-                    <Link className={"redirect-font-color"} to="/registration">Sign up!</Link>
                 </div>
+            </div>
         );
     }
 }

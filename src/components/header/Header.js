@@ -24,7 +24,7 @@ export default class Header extends Component {
     render() {
         const isLoginRef = this.props.isLoginRef;
         return  (
-            <header>
+            <header className={"brown-background"}>
                 <div className="logo">DOGMATE</div>
                 {isLoginRef && <UserLogo onClick={this.changeIsAvatarClicked.bind(this)}/>}
             </header>

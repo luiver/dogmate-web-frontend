@@ -3,6 +3,11 @@ body {
     justify-content: center;
 }
 
+.wrapper-container {
+    display: flex;
+    justify-content: center;
+}
+
 .outer-box {
     margin-top: 1rem;
     font-style: normal;
