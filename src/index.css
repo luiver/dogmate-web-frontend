@@ -35,6 +35,12 @@
   font-style: italic;
 }
 
+@font-face {
+  font-family: 'Montserrat';
+  src: local('Montserrat-SemiBold'), url(./fonts/Montserrat/Montserrat-SemiBold.ttf) format('truetype');
+  font-weight: 600;
+}
+
 body {
   margin: 0;
   font-family: Montserrat, sans-serif;
@@ -74,7 +80,7 @@ code {
 
 .yellow{
   background: #E9B600;
-  text-shadow: -1px 0 #333, 0 1px #333, 1px 0 #333, 0 -1px #333;
+
 }
 
 .alert-orange{
@@ -99,5 +105,9 @@ code {
 
 .redirect-font-color {
   color: #FFFFFF;
+}
+
+.shadow {
+  text-shadow: -1px 0 #333, 0 1px #333, 1px 0 #333, 0 -1px #333;
 }
 
