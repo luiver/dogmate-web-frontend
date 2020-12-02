@@ -9,6 +9,7 @@ export default class Registration extends Component {
         super(props);
 
         this.state = {
+            name: "",
             email: "",
             password: "",
             password_confirmation: "",
@@ -27,11 +28,11 @@ export default class Registration extends Component {
     }
 
     handleSubmit(event) {
-        axios.post("http://localhost:8080/api/v1/users", {
-                user: {
-                    email: this.state.email,
-                    password: this.state.password,
-                }
+        axios.post("http://localhost:8080/register",
+            {
+                name: this.state.name,
+                email: this.state.email,
+                password: this.state.password
             },
             {withCredentials: true}
         )
@@ -44,7 +45,6 @@ export default class Registration extends Component {
         event.preventDefault();
     }
 
-
     render() {
         return (
             <div className={"wrapper-container"}>
@@ -52,6 +52,14 @@ export default class Registration extends Component {
                     <div className={"inner-box"}>
                         <h1 className={"brown"}>Join your dogmates!</h1>
                         <form onSubmit={this.handleSubmit}>
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="name"
+                                value={this.state.name}
+                                onChange={this.handleChange}
+                                required>
+                            </input>
                             <input
                                 type="email"
                                 name="email"
