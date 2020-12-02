@@ -1,13 +1,12 @@
 import React from "react";
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 import MainTemplate from "./template/MainTemplate";
-import {Component} from "react/cjs/react.production.min";
 import Registration from "./auth/Registration";
 import Login from "./auth/Login";
 import Header from "./header/Header";
 import '../index.css'
 
-export default class App extends Component {
+export default class App extends React.Component {
 
     constructor(props) {
         super(props);
@@ -38,8 +37,11 @@ export default class App extends Component {
                                 headerWithContent(<Login isLogged={loggedIn} loginCallback={this.handleIsLoginCallback}/>)}
                         </Route>
                         <Route path="/login">
-                            {loggedIn ? <MainTemplate/> :
-                                headerWithContent(<Login isLogged={loggedIn} loginCallback={this.handleIsLoginCallback}/>)}
+                            {console.log("i am on login page")}
+                            {/*{loggedIn ? <MainTemplate/> :*/}
+                            {/*    headerWithContent(<Login isLogged={loggedIn} loginCallback={this.handleIsLoginCallback}/>)}*/}
+                            {headerWithContent(<Login isLogged={loggedIn} loginCallback={this.handleIsLoginCallback}/>)}
+
                         </Route>
                         <Route path="/user-profile">
                             {loggedIn ? <MainTemplate/> :
@@ -50,7 +52,7 @@ export default class App extends Component {
                                 headerWithContent(<Login isLogged={loggedIn} loginCallback={this.handleIsLoginCallback}/>)}
                         </Route>
                         <Route path="/logout">
-                            <Login/>
+                            {/*<Redirect to={"/login"}/>*/}
                         </Route>
                     </Switch>
                 </div>
