@@ -62,7 +62,7 @@ export default class App extends Component {
 const headerWithContent = (component) => {
     return (
         <div>
-            <Header isLoginRef={true}/>
+            <Header isLoginRef={false}/>
             {component}
         </div>
     );
