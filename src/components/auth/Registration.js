@@ -77,7 +77,7 @@ export default class Registration extends Component {
                             required>
                         </input>
 
-                        <button className={"yellow"} type="submit">Register</button>
+                        <button className={"yellow shadow"} type="submit">Register</button>
                         <Link to="/login" className={"additional-info"}>Back to login page</Link>
 
                     </form>

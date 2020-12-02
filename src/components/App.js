@@ -20,6 +20,21 @@ export default function App() {
                     <Route path="/login">
                         <MainTemplate doesUserWantToRegister={false}/>
                     </Route>
+                    <Route path="/user-profile">
+                        {/*<Registration/>*/}
+                        <MainTemplate/>
+                    </Route>
+                    <Route path="/settings">
+                    {/*<Registration/>*/}
+                    <MainTemplate />
+                </Route>
+                    <Route path="/logout">
+                    {/*<Registration/>*/}
+                    <MainTemplate/>
+                </Route>
+
+
+
                 </Switch>
             </div>
         </Router>

@@ -22,4 +22,5 @@
 
 .right-container {
     width: 22.22vw;
+    align-self: flex-end;
 }

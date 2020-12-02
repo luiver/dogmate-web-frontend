@@ -1,0 +1,12 @@
+.user-menu-bar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #7E6955;
+}
+
+.user-menu-link {
+    font-weight: 600;
+    font-size: 24px;
+    color: #ffffff;
+}
