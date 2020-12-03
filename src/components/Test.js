@@ -14,21 +14,8 @@ import Login from "./auth/Login";
 import Registration from "./auth/Registration";
 import AuthService from "../services/AuthService";
 import AvatarMenu from "./navigation/AvatarMenu";
-
-// This example has 3 pages: a public page, a protected
-// page, and a login screen. In order to see the protected
-// page, you must first login. Pretty standard stuff.
-//
-// First, visit the public page. Then, visit the protected
-// page. You're not yet logged in, so you are redirected
-// to the login page. After you login, you are redirected
-// back to the protected page.
-//
-// Notice the URL change each time. If you click the back
-// button at this point, would you expect to go back to the
-// login page? No! You're already logged in. Try it out,
-// and you'll see you go back to the page you visited
-// just *before* logging in, the public page.
+import MainNavigation from "./navigation/MainNavigation";
+import Home from "./home/Home";
 
 export default function Test() {
     return (
@@ -51,7 +38,7 @@ export default function Test() {
                             <ProtectedPage />
                         </PrivateRoute>
                         <PrivateRoute path="/home">
-                            <MainTemplate isAvatarClicked={avatarClicked()}/>
+                            <NewTemplate />
                         </PrivateRoute>
 
                     </Switch>
@@ -95,7 +82,7 @@ function useAuth() {
 function useProvideAuth() {
     const [user, setUser] = useState(null);
     const [token, setToken] = useState(null);
-
+    const [isAvatarClicked, setIsAvatarClicked] = useState(false);
     const logIn = (email, password) => {
         AuthService.login(email, password);
 
@@ -110,13 +97,24 @@ function useProvideAuth() {
 
     const signout = cb => {
         return fakeAuth.signout(() => {
+            AuthService.logout();
             setUser(null);
             cb();
         });
     };
 
+    const clickAvatar = () => {
+        console.log("isAvatar clicked")
+        console.log(isAvatarClicked)
+        return () => {
+            setIsAvatarClicked(!isAvatarClicked)
+        };
+    }
+
     return {
         user,
+        isAvatarClicked,
+        clickAvatar,
         signin,
         signout
     };
@@ -140,7 +138,7 @@ function NewHeader() {
             >
                 Sign out
             </button>
-            <UserLogo/>
+            <UserLogo onClick={auth.clickAvatar()}/>
         </header>
     ) : (
         <header className={"brown-background"}>
@@ -164,7 +162,7 @@ const UserLogo = props => {
     return (
         <div
             className="main-avatar yellow"
-            onClick={avatarClicked}
+            onClick={props.onClick}
         >
             <span>
                 A
@@ -275,4 +273,24 @@ function LoginPage() {
             </div>
         </div>
     );
+}
+
+function NewTemplate() {
+    let auth = useAuth();
+    return (
+        <div>
+            <div className="main-container">
+                <div className="left-menu">
+                    {<MainNavigation/>}
+                </div>
+                <div className="content-container">
+                    {<Home/>}
+                </div>
+                <div className="right-container">
+                    {auth.isAvatarClicked && <AvatarMenu/>}
+                </div>
+            </div>
+        </div>
+    )
+
 }

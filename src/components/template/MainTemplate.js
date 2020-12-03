@@ -5,23 +5,26 @@ import MainNavigation from "../navigation/MainNavigation";
 import AvatarMenu from "../navigation/AvatarMenu";
 import '../../index.css'
 import './mainTemplate.css'
+import Test from "../Test";
 
 export default class MainTemplate extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            isAvatarClicked: null
+            //isAvatarClicked: this.props.isAvatarClicked
         }
     }
 
-    handleIsAvatarClicked = (data) => {
-        this.setState({isAvatarClicked: data});
-    }
+    // handleIsAvatarClicked = (data) => {
+    //     this.setState({isAvatarClicked: data});
+    // }
 
     render() {
         const {isAvatarClicked} = this.state;
-
+        let click = this.context.isAvatarClicked;
+        console.log("click")
+        console.log(click)
         return (
             <div>
                 {/*<div className="main-header brown-background">*/}
@@ -35,7 +38,7 @@ export default class MainTemplate extends Component {
                         {<Home/>}
                     </div>
                     <div className="right-container">
-                        {isAvatarClicked && <AvatarMenu/>}
+                        {click && <AvatarMenu/>}
                     </div>
                 </div>
             </div>

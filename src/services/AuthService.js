@@ -36,6 +36,7 @@ class AuthService {
 
     logout() {
         //todo remove cookie
+        console.log("removing cookie")
         Cookies.remove('user')
         //localStorage.removeItem("user");
     }
