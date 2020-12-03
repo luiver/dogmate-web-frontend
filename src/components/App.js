@@ -51,9 +51,6 @@ export default class App extends Component {
                 <div className="switch-container">
 
                     <Switch>
-                        <Route exact path="/" >
-                            {token ? <MainTemplate/> : <Redirect to={"/login"}/>}
-                        </Route>
                         <Route exact path="/registration" >
                             {token ? <Redirect to={"/"}/>  : <Registration/>}
                         </Route>
@@ -63,6 +60,9 @@ export default class App extends Component {
                         <Route path="/user-profile"/>
                         <Route path="/settings"/>
                         <Route path="/logout"/>
+                        <Route exact path="/" >
+                            {token ? <MainTemplate/> : <Redirect to={"/login"}/>}
+                        </Route>
                     </Switch>
 
                 </div>

@@ -22,12 +22,10 @@ class AuthService {
                 console.log(response.status);
                 //return response.status;
             })
-            .finally()
             .catch(error => {
                 console.log("login error", error);
                 this.changeErrorMessage().bind(this);
-            })
-            ;
+            });
     }
 
     changeErrorMessage = () => {
