@@ -3,6 +3,8 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import './auth.css'
 import App from "../App";
+import AuthService from "../../services/AuthService";
+import MainTemplate from "../template/MainTemplate";
 
 export default class Login extends Component {
     constructor(props) {
@@ -25,32 +27,45 @@ export default class Login extends Component {
         });
     }
 
+    returnMainTemplate() {
+        return <MainTemplate/>;
+    }
+
     handleSubmit(event) {
         const {email, password} = this.state;
-        axios
-            .post(
-                "http://localhost:8080/login",
-                {
-                    username: email,
-                    password: password
-                }, {withCredentials: true})
-            .then(response => {
-                console.log("res from login", response);
-                console.log("auth below")
-                console.log(response.headers.authorization.valueOf())
-                //todo create cookie for user with jwt
-                if (response.status.valueOf() === 200) {
-                    // this.props.isLogInCallback(true)
-                    this.setState({isLogged: true})
-                    this.props.loginCallback(true)
-                    // return <MainTemplate/>
-                }
-            })
-            .catch(error => {
-                console.log("login error", error);
-                this.changeErrorMessage()
-            })
+
+        //AuthService.login(email, password);
+
+        const userToken = AuthService.login(email, password).then( ()=> {return this.returnMainTemplate()});
+        console.log("usertoken " + userToken);
+        if (userToken) {
+            console.log("got token");
+        }
         event.preventDefault();
+        // axios
+        //     .post(
+        //         "http://localhost:8080/login",
+        //         {
+        //             username: email,
+        //             password: password
+        //         }, {withCredentials: true})
+        //     .then(response => {
+        //         console.log("res from login", response);
+        //         console.log("auth below")
+        //         console.log(response.headers.authorization.valueOf())
+        //         //todo create cookie for user with jwt
+        //         if (response.status.valueOf() === 200) {
+        //             // this.props.isLogInCallback(true)
+        //             this.setState({isLogged: true})
+        //             this.props.loginCallback(true)
+        //             // return <MainTemplate/>
+        //         }
+        //     })
+        //     .catch(error => {
+        //         console.log("login error", error);
+        //         this.changeErrorMessage()
+        //     })
+        // event.preventDefault();
     }
 
     changeErrorMessage = () => {
@@ -61,6 +76,7 @@ export default class Login extends Component {
 
     render() {
         const {isLogged} = this.state
+
         console.log("in Login render(), isLogged= " + isLogged)
         if (isLogged) {
             return <App/>

@@ -24,9 +24,9 @@ export default class MainTemplate extends Component {
 
         return (
             <div>
-                <div className="main-header brown-background">
-                    <Header isLoginRef={true} isAvatarClickedCallback={this.handleIsAvatarClicked}/>
-                </div>
+                {/*<div className="main-header brown-background">*/}
+                {/*    <Header isLoginRef={true} isAvatarClickedCallback={this.handleIsAvatarClicked}/>*/}
+                {/*</div>*/}
                 <div className="main-container">
                     <div className="left-menu">
                         {<MainNavigation/>}

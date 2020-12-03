@@ -1,5 +1,6 @@
 import {Component} from "react";
 import './header.css'
+import {BrowserRouter, Link} from "react-router-dom";
 
 export default class Header extends Component {
     constructor(props) {
@@ -23,11 +24,19 @@ export default class Header extends Component {
 
     render() {
         const isLoginRef = this.props.isLoginRef;
+        const loggedInUser = this.props.loggedInUser;
         return  (
-            <header className={"brown-background"}>
-                <div className="logo">DOGMATE</div>
-                {isLoginRef && <UserLogo onClick={this.changeIsAvatarClicked.bind(this)}/>}
-            </header>
+            <BrowserRouter>
+                <header className={"brown-background"}>
+                    <div className="logo">
+                        <Link to={"/"}>
+                            DOGMATE
+                        </Link>
+                    </div>
+                    {loggedInUser && <UserLogo onClick={this.changeIsAvatarClicked.bind(this)}/>}
+                </header>
+            </BrowserRouter>
+
         )
     }
 }

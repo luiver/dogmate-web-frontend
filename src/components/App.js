@@ -1,70 +1,80 @@
-import React from "react";
+import React, { Component } from "react";
 import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 import MainTemplate from "./template/MainTemplate";
 import Registration from "./auth/Registration";
 import Login from "./auth/Login";
 import Header from "./header/Header";
+import Home from "./home/Home";
 import '../index.css'
+import AuthService from "../services/AuthService";
 
-export default class App extends React.Component {
+export default class App extends Component {
 
     constructor(props) {
         super(props);
 
-        this.state = {
-            loggedIn: false
-        }
+        this.logOut = this.logOut.bind(this);
 
-        this.handleIsLoginCallback = this.handleIsLoginCallback.bind(this);
+        this.state = {
+            token: undefined,
+            user: undefined
+        }
     }
 
-    handleIsLoginCallback = (data) => {
-        this.setState({loggedIn: data});
+    logOut() {
+        AuthService.prototype.logout();
+    }
+
+    componentDidMount() {
+        const userToken = AuthService.getUserToken();
+        const user = AuthService.getCurrentUser();
+
+        if (userToken) {
+            this.setState({
+                token: userToken,
+                user: user
+            });
+        }
     }
 
     render() {
-        const {loggedIn} = this.state
-        console.log("in App render, loggedIn = " + loggedIn)
+        const {token, user} = this.state
+        console.log("in App render, token = " + token)
+        console.log("user: " + user);
         return (
-            <Router>
-                <div>
-                    <Switch>
-                        <Route path="/registration">
-                            {loggedIn ? <MainTemplate/> : headerWithContent(<Registration/>)}
-                        </Route>
-                        <Route path="/">
-                            {loggedIn ? <MainTemplate isLogged={loggedIn}/> :
-                                headerWithContent(<Login isLogged={loggedIn} loginCallback={this.handleIsLoginCallback}/>)}
-                        </Route>
-                        <Route path="/login">
-                            {console.log("i am on login page")}
-                            {/*{loggedIn ? <MainTemplate/> :*/}
-                            {/*    headerWithContent(<Login isLogged={loggedIn} loginCallback={this.handleIsLoginCallback}/>)}*/}
-                            {headerWithContent(<Login isLogged={loggedIn} loginCallback={this.handleIsLoginCallback}/>)}
+            <div>
+                {token ? (
+                    <Header loggedInUser={user}/>
+                ) : (
+                    <Header/>
+                )}
+                <div className="switch-container">
 
+                    <Switch>
+                        <Route exact path="/" >
+                            {token ? <MainTemplate/> : <Redirect to={"/login"}/>}
                         </Route>
-                        <Route path="/user-profile">
-                            {loggedIn ? <MainTemplate/> :
-                                headerWithContent(<Login isLogged={loggedIn} loginCallback={this.handleIsLoginCallback}/>)}
+                        <Route exact path="/registration" >
+                            {token ? <Redirect to={"/"}/>  : <Registration/>}
                         </Route>
-                        <Route path="/settings">
-                            {loggedIn ? <MainTemplate/> :
-                                headerWithContent(<Login isLogged={loggedIn} loginCallback={this.handleIsLoginCallback}/>)}
+                        <Route exact path="/login">
+                            {token ? <Redirect to={"/"}/> : <Login/>}
                         </Route>
-                        <Route path="/logout">
-                            {/*<Redirect to={"/login"}/>*/}
-                        </Route>
+                        <Route path="/user-profile"/>
+                        <Route path="/settings"/>
+                        <Route path="/logout"/>
                     </Switch>
+
                 </div>
-            </Router>
+            </div>
         );
     }
 }
 
-const headerWithContent = (component) => {
+const headerWithContent = (component, user) => {
     return (
         <div>
-            <Header isLoginRef={false}/>
+            <Header loggedInUser={user}/>
             {component}
         </div>
     );
