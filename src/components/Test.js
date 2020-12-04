@@ -6,7 +6,7 @@ import {
     Link,
     Redirect,
     useHistory,
-    useLocation
+    useLocation, useRouteMatch
 } from "react-router-dom";
 import Header from "./header/Header";
 import MainTemplate from "./template/MainTemplate";
@@ -290,6 +290,21 @@ function NewTemplate() {
                     {auth.isAvatarClicked && <AvatarMenu/>}
                 </div>
             </div>
+        </div>
+    )
+
+}
+
+function NewAvatarMenu()  {
+    let { url} = useRouteMatch();
+    let auth  = useAuth();
+
+
+    return(
+        <div className="user-menu-bar">
+            <Link to={`${url}/user-profile`} class="user-menu-link" onClick={auth.clickAvatar}>My profile</Link>
+            <Link to={`${url}/settings`} class="user-menu-link" onClick={auth.clickAvatar}>Settings</Link>
+            <Link to={`${url}/logout`} class="user-menu-link" onClick={auth.clickAvatar}>Log out</Link>
         </div>
     )
 
